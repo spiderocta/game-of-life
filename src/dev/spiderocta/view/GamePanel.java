@@ -15,7 +15,7 @@ public class GamePanel extends JPanel {
 	private static final long serialVersionUID = -9131201032069511737L;
 
 	// size of a single cell in the grid
-	private final static int CELLSIZE = 50;
+	private final static int CELLSIZE = 20;
 
 	// main colors
 	private final static Color BACKGROUND_COLOR = Color.BLACK;

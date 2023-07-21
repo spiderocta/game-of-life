@@ -6,12 +6,14 @@ public class World {
 	private int rows;
 	private int cols;
 	private boolean[][] grid;
+	private boolean[][] buffer;
 
 	public World(int rows, int cols) {
 		super();
 		this.rows = rows;
 		this.cols = cols;
 		this.grid = new boolean[rows][cols];
+		this.buffer = new boolean[rows][cols];
 	}
 
 	public boolean getCell(int row, int col) {
@@ -93,8 +95,38 @@ public class World {
 		for(int row =0; row < rows; row++) {
 			for(int col =0; col < cols; col++) {
 				int neighbors = countNeighbors(row, col);
-				System.out.println(neighbors);
+				
+				/* Conway's Rules
+				 * if neighboring cell count < 2, deactivate cells
+				 * if neighboring cell count > 3, deactivate cells
+				 * if neighboring cell count == 3, activate cells
+				 * if neighboring cell count == 2, let her alone 
+				 */
+				
+				boolean status = false;
+				
+				if(neighbors < 2) {
+					status = false;
+				}
+				else if(neighbors > 3) {
+					status = false;
+				}
+				else if(neighbors == 3) {
+					status = true;
+				}
+				else if(neighbors == 2) {
+					status = getCell(row, col);
+				}
+				
+				buffer[row][col] = status;
+				
 			}
+		}
+		
+		for(int row =0; row < rows; row++) {
+			for(int col =0; col < cols; col++) {
+				grid[row][col] = buffer[row][col];
+			}	
 		}
 	}
 
