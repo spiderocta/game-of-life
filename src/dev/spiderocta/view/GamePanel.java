@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import dev.spiderocta.model.World;
+
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = -9131201032069511737L;
@@ -35,14 +37,27 @@ public class GamePanel extends JPanel {
 		topBottomMargin = ((height % CELLSIZE) + CELLSIZE) / 2;
 		leftRightMargin = ((width % CELLSIZE) + CELLSIZE) / 2;
 
+		// calculating the number of rows and columns in the grid
+		int rows = (height - 2 * topBottomMargin) / CELLSIZE;
+		int cols = (width - 2 * leftRightMargin) / CELLSIZE;
+
+		// creating the world
+		World world = new World(rows, cols);
+		world.setCell(0, 0, true);
+		world.setCell(2, 1, true);
+
 		g2d.setColor(BACKGROUND_COLOR);
 		super.paintComponent(g2d);
 		g2d.fillRect(0, 0, width, height);
 
 		drawGrid(g2d, width, height);
-		fillCell(g2d, 2, 4, true);
-		fillCell(g2d, 2, 4, false);
-		fillCell(g2d, 3, 5, true);
+
+		for (int col = 0; col < cols; col++) {
+			for (int row = 0; row < rows; row++) {
+				boolean status = world.getCell(row, col);
+				fillCell(g2d, row, col, status);
+			}
+		}
 	}
 
 	// method to draw the grid
@@ -60,17 +75,16 @@ public class GamePanel extends JPanel {
 		}
 
 	}
-	
+
 	// method to fill cells
 	private void fillCell(Graphics2D g, int row, int col, boolean status) {
 		Color color = status ? FOREROUND_COLOR : BACKGROUND_COLOR;
 		g.setColor(color);
-		
+
 		int x = leftRightMargin + col * CELLSIZE;
 		int y = topBottomMargin + row * CELLSIZE;
-		
+
 		g.fillRect(x + 2, y + 2, CELLSIZE - 2, CELLSIZE - 2);
 	}
-	
-	
+
 }
