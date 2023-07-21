@@ -34,8 +34,17 @@ public class GamePanel extends JPanel {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("x : " + e.getX() + " " + "Y : " + e.getY());
-				world.setCell(3, 3, true);
+
+				// get the actual x and y coordinates for cells 
+				int row = (e.getY() - topBottomMargin) / CELLSIZE;
+				int col = (e.getX() - leftRightMargin) / CELLSIZE;
+
+				if (row >= world.getRows() || col >= world.getCols()) {
+					return;
+				}
+				boolean status = world.getCell(row, col);
+
+				world.setCell(row, col, !status);
 				repaint();
 			}
 
@@ -60,8 +69,6 @@ public class GamePanel extends JPanel {
 		if (world == null) {
 			world = new World(rows, cols);
 		}
-		world.setCell(0, 0, true);
-		world.setCell(2, 1, true);
 
 		g2d.setColor(BACKGROUND_COLOR);
 		super.paintComponent(g2d);

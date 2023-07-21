@@ -19,4 +19,13 @@ public class World {
 	public void setCell(int row, int col, boolean status) {
 		grid[row][col] = status;
 	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public int getCols() {
+		return cols;
+	}
+
 }
