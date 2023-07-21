@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
 				case 32: //spacebar
 					break;
 				case 8: //backspace
-					
+					gamePanel.clear();
 					break;
 				case 10://enter
 					gamePanel.randomize();

@@ -119,4 +119,9 @@ public class GamePanel extends JPanel {
 		repaint();
 	}
 
+	public void clear() {
+		world.clear();
+		repaint();
+	}
+
 }
