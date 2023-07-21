@@ -3,8 +3,6 @@ package dev.spiderocta.view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -121,6 +119,11 @@ public class GamePanel extends JPanel {
 
 	public void clear() {
 		world.clear();
+		repaint();
+	}
+
+	public void next() {
+		world.next();
 		repaint();
 	}
 

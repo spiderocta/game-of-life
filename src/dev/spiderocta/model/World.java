@@ -47,5 +47,55 @@ public class World {
 			}
 		}
 	}
+	
+	// utility function to count neighbors
+	private int countNeighbors(int row, int col) {
+		
+		int neighbors = 0;
+		
+		for(int rowOffset = -1; rowOffset <=1; rowOffset++) {
+			for(int colOffset = -1; colOffset <=1; colOffset++) {
+				
+				if(rowOffset ==0 || colOffset ==0) {
+					continue;
+				}
+				
+				int gridRow = row + rowOffset;
+				int gridCol = col  + colOffset;
+				
+				if(gridRow < 0) {
+					continue;
+				}
+				else if(gridRow == rows) {
+					continue;
+				}
+				
+				if(gridCol <0) {
+					continue;
+				}
+				else if(gridCol ==cols) {
+					continue;
+				}
+				
+				// check if cell is active or not
+				boolean status =  getCell(gridRow, gridCol);
+				
+				if(status) {
+					neighbors++;
+				}
+			}
+		}
+		
+		return neighbors;
+	}
+	
+	public void next() {
+		for(int row =0; row < rows; row++) {
+			for(int col =0; col < cols; col++) {
+				int neighbors = countNeighbors(row, col);
+				System.out.println(neighbors);
+			}
+		}
+	}
 
 }
