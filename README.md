@@ -24,9 +24,9 @@
 ## app screenshots
 ![image](https://github.com/spiderocta/game-of-life/assets/103882018/1ff31bed-bf96-4bad-a473-0b3adfa055b6)
 
-## how it differs 
-- it is interactive game of life
-- using the 3 main keys listed below to control the game
+## for your knowledge
+- it is an interactive game of life
+- by using the 3 main keys listed below to control the game
   
 ```
         - ENTER     -> randomize the grid
@@ -37,6 +37,4 @@
 
         - SPACEBAR  -> Iterator | the Patern generator
         
-
-        - you can use the mouse to manually test a pattern
 ```
