@@ -69,6 +69,10 @@ public class GamePanel extends JPanel {
 		// creating the world
 		if (world == null) {
 			world = new World(rows, cols);
+		}else {
+			if(world.getRows() != rows || world.getCols() != cols) {
+				world = new World(rows, cols);
+			}
 		}
 
 		g2d.setColor(BACKGROUND_COLOR);
