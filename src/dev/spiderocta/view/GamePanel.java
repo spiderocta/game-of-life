@@ -3,6 +3,8 @@ package dev.spiderocta.view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
@@ -24,7 +26,20 @@ public class GamePanel extends JPanel {
 	private int topBottomMargin;
 	private int leftRightMargin;
 
+	// defining a world
+	private World world;
+
 	public GamePanel() {
+		addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("x : " + e.getX() + " " + "Y : " + e.getY());
+				world.setCell(3, 3, true);
+				repaint();
+			}
+
+		});
 	}
 
 	@Override
@@ -42,7 +57,9 @@ public class GamePanel extends JPanel {
 		int cols = (width - 2 * leftRightMargin) / CELLSIZE;
 
 		// creating the world
-		World world = new World(rows, cols);
+		if (world == null) {
+			world = new World(rows, cols);
+		}
 		world.setCell(0, 0, true);
 		world.setCell(2, 1, true);
 
