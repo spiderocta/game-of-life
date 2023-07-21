@@ -3,6 +3,8 @@ package dev.spiderocta.view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -35,7 +37,7 @@ public class GamePanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				// get the actual x and y coordinates for cells 
+				// get the actual x and y coordinates for cells
 				int row = (e.getY() - topBottomMargin) / CELLSIZE;
 				int col = (e.getX() - leftRightMargin) / CELLSIZE;
 
@@ -49,6 +51,7 @@ public class GamePanel extends JPanel {
 			}
 
 		});
+
 	}
 
 	@Override
