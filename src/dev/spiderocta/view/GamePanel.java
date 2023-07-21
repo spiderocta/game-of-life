@@ -114,4 +114,9 @@ public class GamePanel extends JPanel {
 		g.fillRect(x + 2, y + 2, CELLSIZE - 2, CELLSIZE - 2);
 	}
 
+	public void randomize() {
+		world.randomize();
+		repaint();
+	}
+
 }

@@ -1,5 +1,7 @@
 package dev.spiderocta.model;
 
+import java.util.Random;
+
 public class World {
 	private int rows;
 	private int cols;
@@ -26,6 +28,16 @@ public class World {
 
 	public int getCols() {
 		return cols;
+	}
+
+	public void randomize() {
+		Random random = new Random();
+
+		for (int i = 0; i < (rows * cols) / 10; i++) {
+			int row = random.nextInt(rows);
+			int col = random.nextInt(cols);
+			setCell(row, col, true);
+		}
 	}
 
 }
